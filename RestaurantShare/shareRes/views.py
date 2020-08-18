@@ -75,3 +75,9 @@ def Update_restaurant(request):
     before_restaurant.save()
 
     return HttpResponseRedirect(reverse('resDetailPage', kwargs={'res_id':resId}))
+
+def Delete_restaurant(request):
+    res_id = request.POST['resId']
+    restaurant = Restaurant.objects.get(id = res_id)
+    restaurant.delete()
+    return HttpResponseRedirect(reverse('index'))
